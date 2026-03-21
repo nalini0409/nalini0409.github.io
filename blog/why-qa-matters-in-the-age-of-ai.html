@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why QA Matters More Than Ever in the Age of AI | Nalini</title>
+  <style>
+    :root {
+      --primary: #0f4c81;
+      --accent: #2196f3;
+      --accent-light: #e3f2fd;
+      --text: #1a1a2e;
+      --text-muted: #5a6a7a;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --border: #e2e8f0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── Nav ── */
+    nav {
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav ul {
+      max-width: 780px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      height: 56px;
+      list-style: none;
+      gap: 1.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--accent); }
+    nav .back {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      color: var(--primary) !important;
+      font-weight: 600;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, #1565c0 100%);
+      color: #fff;
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+    }
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .hero-tag {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 50px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .hero-date { opacity: 0.65; font-size: 0.85rem; }
+    .hero h1 {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      max-width: 700px;
+      margin: 0 auto 1rem;
+      line-height: 1.25;
+    }
+    .hero .byline {
+      opacity: 0.75;
+      font-size: 0.9rem;
+    }
+
+    /* ── Article ── */
+    article {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+
+    article h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 2.5rem 0 0.8rem;
+    }
+
+    article p {
+      margin-bottom: 1.2rem;
+      color: #2d3748;
+      font-size: 1.02rem;
+    }
+
+    article ul, article ol {
+      margin: 0.5rem 0 1.2rem 1.5rem;
+      color: #2d3748;
+    }
+    article li { margin-bottom: 0.5rem; font-size: 1.02rem; }
+
+    .pullquote {
+      border-left: 4px solid var(--accent);
+      background: var(--accent-light);
+      border-radius: 0 8px 8px 0;
+      padding: 1.2rem 1.5rem;
+      margin: 2rem 0;
+      font-size: 1.08rem;
+      font-style: italic;
+      color: var(--primary);
+      font-weight: 500;
+    }
+
+    .callout {
+      background: #fff8e1;
+      border: 1px solid #ffe082;
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+      color: #5a4000;
+    }
+    .callout strong { color: #b45309; }
+
+    .highlight-box {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+      color: #166534;
+    }
+
+    /* ── Author card ── */
+    .author-card {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 3rem;
+    }
+    .author-avatar {
+      width: 60px; height: 60px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .author-name { font-weight: 700; color: var(--primary); margin-bottom: 0.2rem; }
+    .author-bio { font-size: 0.88rem; color: var(--text-muted); }
+
+    /* ── Back CTA ── */
+    .back-cta {
+      text-align: center;
+      padding: 2.5rem 2rem;
+      background: linear-gradient(135deg, var(--primary), #1565c0);
+    }
+    .back-cta p { color: rgba(255,255,255,0.8); margin-bottom: 1rem; font-size: 0.95rem; }
+    .btn {
+      display: inline-block;
+      padding: 0.7rem 1.8rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      background: #fff;
+      color: var(--primary);
+      transition: background 0.2s;
+    }
+    .btn:hover { background: var(--accent-light); }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: var(--text);
+      color: rgba(255,255,255,0.4);
+      font-size: 0.82rem;
+    }
+
+    @media (max-width: 600px) {
+      .author-card { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li><a href="../index.html" class="back">← Back to Profile</a></li>
+    <li style="margin-left:auto"><a href="../index.html#contact">Hire Me</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <div class="hero-meta">
+    <span class="hero-tag">Quality Assurance</span>
+    <span class="hero-tag">AI & Testing</span>
+    <span class="hero-date">March 2026 · 5 min read</span>
+  </div>
+  <h1>Why Software Testing Is More Critical Than Ever in the Age of AI-Generated Code</h1>
+  <p class="byline">By Nalini &nbsp;·&nbsp; Sr. QA Engineer, Seattle</p>
+</header>
+
+<article>
+
+  <p>
+    Artificial intelligence is rewriting — quite literally — how software gets built. GitHub Copilot, ChatGPT, Gemini, and a growing ecosystem of AI coding assistants now generate thousands of lines of production code every day. For many teams, the velocity gains are real and impressive. But velocity without quality is just a faster way to ship problems.
+  </p>
+
+  <p>
+    There is a term quietly spreading through engineering circles: <strong>"AI slop"</strong> — code that looks plausible, compiles cleanly, and passes a quick manual review, but harbors subtle logic errors, security gaps, or untested edge cases that only surface in production. The irony is sharp: the tools designed to accelerate development are creating a new class of bugs that are harder to spot precisely because they look so polished.
+  </p>
+
+  <div class="pullquote">
+    "AI-generated code can be syntactically perfect and semantically wrong at the same time. That gap is exactly where QA lives."
+  </div>
+
+  <h2>The Confidence Problem</h2>
+
+  <p>
+    One of the most dangerous side effects of AI code generation is misplaced confidence. When a developer writes code by hand, there is implicit ownership — they tend to scrutinize it because they know its rough edges. When an AI produces the same output in seconds, there is a subtle psychological shift: it <em>looks</em> authoritative. Developers may review it less critically, and non-technical stakeholders may assume it has already been "checked."
+  </p>
+
+  <p>
+    In reality, AI models are trained to produce statistically probable code, not provably correct code. They hallucinate library methods that do not exist, implement business logic based on pattern matching rather than actual requirements, and miss domain-specific constraints that only a human (or a well-designed test suite) would catch.
+  </p>
+
+  <div class="callout">
+    <strong>Real-world example:</strong> AI assistants have been observed generating SQL queries that appear correct but have off-by-one errors in date range filters — the kind of bug that sails through code review and only shows up in end-of-quarter reporting.
+  </div>
+
+  <h2>Where Automation Testing Becomes the Safety Net</h2>
+
+  <p>
+    This is where structured QA engineering — especially automation — becomes not just valuable but essential. A well-designed test suite does not care who wrote the code under test. It validates behavior against expected outcomes, consistently and without fatigue.
+  </p>
+
+  <p>Key testing practices that become critical in AI-heavy development pipelines:</p>
+
+  <ul>
+    <li><strong>Behavior-driven test cases</strong> written before or alongside AI-generated code anchor the implementation to actual requirements, not the AI's best guess at them.</li>
+    <li><strong>Comprehensive regression suites</strong> catch regressions introduced when AI tools refactor or "improve" existing code without full context of downstream dependencies.</li>
+    <li><strong>API contract testing</strong> is especially important as AI-generated services may produce subtly different response shapes or status codes than the consuming code expects.</li>
+    <li><strong>Boundary and edge case testing</strong> targets exactly the scenarios that AI models statistically underfit — unusual inputs, empty states, concurrency, and failure paths.</li>
+    <li><strong>Security-focused test cases</strong> that check for injection vulnerabilities, authentication bypasses, and data exposure — areas where AI-generated code frequently introduces risk without obvious code smells.</li>
+  </ul>
+
+  <h2>The Shift From Gatekeeper to Strategic Partner</h2>
+
+  <p>
+    For years, QA was positioned as the final gate before release — a necessary checkpoint, but often treated as a bottleneck. The AI era changes this dynamic. Quality engineers are now most valuable when embedded earlier in the development loop: defining acceptance criteria before a single line of AI-assisted code is written, reviewing AI outputs for testability, and building automation infrastructure that keeps pace with accelerated delivery.
+  </p>
+
+  <div class="highlight-box">
+    Teams that invest in automation-first QA practices are seeing AI coding tools pay off. Teams that skip QA are accumulating technical and quality debt at an unprecedented speed.
+  </div>
+
+  <h2>AI as a QA Tool Too</h2>
+
+  <p>
+    It would be incomplete to frame AI purely as a source of quality risk. The same capabilities that generate application code can be directed toward testing: generating diverse test data, suggesting edge cases a human might miss, or drafting initial test scripts that engineers then refine. The discipline of prompt engineering for test generation is emerging as a real and valuable skill set.
+  </p>
+
+  <p>
+    The key insight is that AI-assisted testing and AI-generated code must grow together. Trusting one without the other is where organizations get into trouble.
+  </p>
+
+  <h2>The Bottom Line</h2>
+
+  <p>
+    Software quality was never an afterthought — but it has rarely been more strategically important than it is today. As AI tools raise the ceiling of what a small development team can build, they also raise the floor of how much can go wrong. Quality engineers who understand automation, who can work at the intersection of testing and AI tooling, and who can translate business requirements into reliable test coverage are not being made redundant by AI. They are becoming more essential.
+  </p>
+
+  <p>
+    The best code is code you can trust. And trust, in software, is built through testing.
+  </p>
+
+  <div class="author-card">
+    <div class="author-avatar">N</div>
+    <div>
+      <div class="author-name">Nalini</div>
+      <div class="author-bio">Sr. QA Engineer with 6+ years building automation frameworks using Selenium, Robot Framework, and Playwright. Based in Seattle, open to contract and contract-to-hire roles.</div>
+    </div>
+  </div>
+
+</article>
+
+<div class="back-cta">
+  <p>Interested in working together?</p>
+  <a href="../index.html#contact" class="btn">View My Profile</a>
+</div>
+
+<footer>
+  &copy; 2026 Nalini · QA Engineer · Seattle, WA
+</footer>
+
+</body>
+</html>
