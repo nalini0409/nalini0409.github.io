@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nalini | QA Engineer</title>
+  <style>
+    :root {
+      --primary: #0f4c81;
+      --accent: #2196f3;
+      --accent-light: #e3f2fd;
+      --text: #1a1a2e;
+      --text-muted: #5a6a7a;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --success: #10b981;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+    }
+    nav ul {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+      height: 60px;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--accent); }
+    nav .nav-cta {
+      margin-left: auto;
+      background: var(--accent);
+      color: #fff !important;
+      padding: 0.45rem 1.2rem;
+      border-radius: 6px;
+      transition: background 0.2s !important;
+    }
+    nav .nav-cta:hover { background: var(--primary) !important; }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, #1565c0 60%, #0d47a1 100%);
+      color: #fff;
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-content { position: relative; max-width: 700px; margin: 0 auto; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 50px;
+      padding: 0.35rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .hero-badge .dot {
+      width: 8px; height: 8px;
+      background: #4ade80;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+    .hero .title {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      opacity: 0.85;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+    }
+    .hero .location {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      opacity: 0.75;
+      font-size: 0.9rem;
+      margin-bottom: 2.5rem;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 0.7rem 1.8rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+    .btn-white {
+      background: #fff;
+      color: var(--primary);
+    }
+    .btn-white:hover { background: var(--accent-light); }
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.6);
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.1); }
+
+    /* ── Layout ── */
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+    .section-title {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.4rem;
+    }
+    .section-subtitle {
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      font-size: 0.95rem;
+    }
+    .divider {
+      width: 48px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin-bottom: 2rem;
+    }
+
+    /* ── Summary ── */
+    .summary-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 2rem;
+      font-size: 1.05rem;
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    /* ── Stats ── */
+    .stats {
+      background: linear-gradient(135deg, var(--primary), #1565c0);
+      padding: 3rem 2rem;
+    }
+    .stats-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+    .stat-item { color: #fff; }
+    .stat-number {
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      opacity: 0.75;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Skills ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .skill-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .skill-card:hover {
+      box-shadow: 0 8px 24px rgba(15,76,129,0.1);
+      transform: translateY(-2px);
+    }
+    .skill-card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+    }
+    .skill-card h3 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.8rem;
+    }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag {
+      background: var(--accent-light);
+      color: var(--primary);
+      border: 1px solid #bbdefb;
+      padding: 0.25rem 0.7rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* ── Experience ── */
+    .experience-bg { background: #f1f5f9; }
+    .timeline { display: flex; flex-direction: column; gap: 2rem; }
+    .exp-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      position: relative;
+      transition: box-shadow 0.2s;
+    }
+    .exp-card:hover { box-shadow: 0 8px 24px rgba(15,76,129,0.1); }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.8rem;
+    }
+    .exp-title { font-size: 1.15rem; font-weight: 700; color: var(--primary); }
+    .exp-company { font-size: 0.95rem; color: var(--text-muted); font-weight: 500; }
+    .exp-period {
+      background: var(--accent-light);
+      color: var(--accent);
+      border: 1px solid #bbdefb;
+      padding: 0.25rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .exp-project {
+      background: #f8fafc;
+      border-left: 3px solid var(--accent);
+      border-radius: 4px;
+      padding: 0.6rem 1rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin: 1rem 0;
+      font-style: italic;
+    }
+    .exp-achievement {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 6px;
+      padding: 0.5rem 0.8rem;
+      font-size: 0.88rem;
+      color: #166534;
+      font-weight: 500;
+      margin: 0.8rem 0;
+    }
+    .exp-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      margin-top: 1rem;
+    }
+    .exp-list li {
+      padding-left: 1.3rem;
+      position: relative;
+      font-size: 0.92rem;
+      color: #374151;
+    }
+    .exp-list li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.75rem;
+      top: 0.1rem;
+    }
+
+    /* ── Education ── */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .edu-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      transition: box-shadow 0.2s;
+    }
+    .edu-card:hover { box-shadow: 0 8px 24px rgba(15,76,129,0.1); }
+    .edu-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .edu-degree { font-size: 1rem; font-weight: 700; color: var(--primary); }
+    .edu-school { font-size: 0.9rem; color: var(--text-muted); }
+    .edu-period {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 20px;
+      padding: 0.2rem 0.7rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-top: 0.3rem;
+      width: fit-content;
+    }
+
+    /* ── Certifications ── */
+    .certs-bg { background: #f1f5f9; }
+    .cert-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+    .cert-chip {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 0.5rem 1.2rem;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .cert-chip:hover {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .cert-chip::before {
+      content: '✓';
+      width: 20px; height: 20px;
+      background: var(--success);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .cert-chip:hover::before { background: rgba(255,255,255,0.3); }
+
+    /* ── Availability Banner ── */
+    .availability {
+      background: linear-gradient(135deg, #065f46, #047857);
+      color: #fff;
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+    .availability h2 { font-size: 1.6rem; margin-bottom: 0.5rem; }
+    .availability p { opacity: 0.85; max-width: 500px; margin: 0 auto 1.5rem; }
+    .avail-pills {
+      display: flex;
+      gap: 0.8rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    .avail-pill {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 50px;
+      padding: 0.35rem 1rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: var(--text);
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .exp-header { flex-direction: column; }
+      nav ul { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Available for Contract Roles
+    </div>
+    <h1>Nalini</h1>
+    <p class="title">Sr. QA Engineer &amp; Automation Specialist</p>
+    <p class="location">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      Seattle, WA &nbsp;·&nbsp; Authorized to work in the U.S. — No sponsorship required
+    </p>
+    <div class="hero-actions">
+      <a href="#experience" class="btn btn-white">View My Work</a>
+      <a href="#contact" class="btn btn-outline">Get In Touch</a>
+    </div>
+  </div>
+</header>
+
+<!-- Stats -->
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-number">6+</div>
+      <div class="stat-label">Years of Experience</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">150+</div>
+      <div class="stat-label">Test Cases Automated</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">40%</div>
+      <div class="stat-label">Regression Cycle Reduction</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">70%</div>
+      <div class="stat-label">Regression Coverage</div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="section" id="about">
+  <p class="section-title">Professional Summary</p>
+  <div class="divider"></div>
+  <div class="summary-card">
+    Automation-focused QA Engineer with 6+ years of experience in Selenium, Robot Framework, and API testing.
+    Built scalable automation frameworks that reduced regression cycles by up to 40%. Experienced in Agile
+    environments and CI/CD integration using Jenkins and GitHub Actions. Based in Seattle and available for
+    contract or contract-to-hire roles.
+  </div>
+</section>
+
+<!-- Skills -->
+<section class="section" id="skills">
+  <p class="section-title">Technical Skills</p>
+  <div class="divider"></div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-icon">🤖</div>
+      <h3>Automation</h3>
+      <div class="tags">
+        <span class="tag">Selenium WebDriver</span>
+        <span class="tag">TestNG</span>
+        <span class="tag">Robot Framework</span>
+        <span class="tag">Cucumber</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">🔌</div>
+      <h3>API Testing</h3>
+      <div class="tags">
+        <span class="tag">Postman</span>
+        <span class="tag">REST Assured</span>
+        <span class="tag">SOAP UI</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">💻</div>
+      <h3>Languages</h3>
+      <div class="tags">
+        <span class="tag">Java</span>
+        <span class="tag">Python</span>
+        <span class="tag">SQL</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">⚙️</div>
+      <h3>CI / CD</h3>
+      <div class="tags">
+        <span class="tag">Jenkins</span>
+        <span class="tag">GitHub Actions</span>
+        <span class="tag">Git</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">🛠️</div>
+      <h3>Tools</h3>
+      <div class="tags">
+        <span class="tag">JIRA</span>
+        <span class="tag">Maven</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">☁️</div>
+      <h3>Cloud</h3>
+      <div class="tags">
+        <span class="tag">AWS</span>
+        <span class="tag">Azure DevOps</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Experience -->
+<section class="experience-bg" id="experience">
+  <div class="section">
+    <p class="section-title">Professional Experience</p>
+    <div class="divider"></div>
+    <div class="timeline">
+
+      <!-- Tech Mahindra -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <div class="exp-title">Sr. Software Engineer</div>
+            <div class="exp-company">Tech Mahindra</div>
+          </div>
+          <span class="exp-period">Jul 2022 – Feb 2025</span>
+        </div>
+        <div class="exp-project">
+          Project: Validated a network provisioning system for a leading US telecom company, ensuring backend sync, access control, and API reliability.
+        </div>
+        <ul class="exp-list">
+          <li>Led a 4-member QA team and built a reusable Robot Framework automation suite covering 70% of regression scenarios.</li>
+          <li>Automated 150+ regression and functional test cases using Selenium and TestNG, reducing manual testing effort by 45%.</li>
+          <li>Reviewed code for quality and reusability; identified risks and improved processes.</li>
+          <li>Collaborated with onsite teams and clients to resolve issues and clarify requirements.</li>
+          <li>Executed sanity and regression tests across multiple environments and validated backend data with SQL.</li>
+        </ul>
+      </div>
+
+      <!-- Cognizant -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <div class="exp-title">QA Analyst / Automation Test Engineer</div>
+            <div class="exp-company">Cognizant Technology Solutions</div>
+          </div>
+          <span class="exp-period">May 2018 – Jun 2022</span>
+        </div>
+        <div class="exp-project">
+          Project: Tested a group insurance platform for a leading US insurer, enabling benefit plan configuration and employee enrollment.
+        </div>
+        <div class="exp-achievement">
+          🏆 Key Achievement: Reduced test execution time by 40% via Selenium framework optimization.
+        </div>
+        <ul class="exp-list">
+          <li>Designed and executed automated test scripts using Selenium WebDriver and TestNG, improving regression cycle efficiency by 40%.</li>
+          <li>Created functional and integration test cases covering benefit configuration and enrollment workflows for a US insurance platform.</li>
+          <li>Managed end-to-end defect lifecycle using JIRA, ensuring timely resolution of critical production issues.</li>
+          <li>Participated in Agile ceremonies and collaborated with cross-functional teams to deliver sprint releases on schedule.</li>
+          <li>Mentored junior QA team members on automation best practices and test design techniques.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Education -->
+<section class="section" id="education">
+  <p class="section-title">Education</p>
+  <div class="divider"></div>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-icon">🎓</div>
+      <div class="edu-degree">Bachelor of Technology — Information Technology</div>
+      <div class="edu-school">B. C. Roy Engineering College, Durgapur, West Bengal, India</div>
+      <span class="edu-period">2013 – 2017</span>
+    </div>
+    <div class="edu-card">
+      <div class="edu-icon">📜</div>
+      <div class="edu-degree">Certificate in Project Management</div>
+      <div class="edu-school">University of Washington, Seattle</div>
+      <span class="edu-period">2025 – Present</span>
+    </div>
+  </div>
+</section>
+
+<!-- Certifications -->
+<section class="certs-bg" id="certifications">
+  <div class="section">
+    <p class="section-title">Certifications &amp; Training</p>
+    <div class="divider"></div>
+    <div class="cert-chips">
+      <div class="cert-chip">Selenium</div>
+      <div class="cert-chip">Agile</div>
+      <div class="cert-chip">JIRA</div>
+      <div class="cert-chip">Robot Framework</div>
+      <div class="cert-chip">Cucumber</div>
+      <div class="cert-chip">TestNG</div>
+      <div class="cert-chip">Gen AI for Testing</div>
+      <div class="cert-chip">AI Agents for Testing</div>
+    </div>
+  </div>
+</section>
+
+<!-- Availability -->
+<section class="availability" id="contact">
+  <h2>Open to Opportunities</h2>
+  <p>Available for contract or contract-to-hire roles in Seattle and remote.</p>
+  <div class="avail-pills">
+    <span class="avail-pill">✔ Contract</span>
+    <span class="avail-pill">✔ Contract-to-Hire</span>
+    <span class="avail-pill">✔ Seattle / Remote</span>
+    <span class="avail-pill">✔ No Sponsorship Needed</span>
+  </div>
+  <a href="mailto:" class="btn btn-white">Get In Touch</a>
+</section>
+
+<footer>
+  <p>&copy; 2026 Nalini · QA Engineer · Seattle, WA</p>
+</footer>
+
+</body>
+</html>
