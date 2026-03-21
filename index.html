@@ -47,6 +47,92 @@
       align-items: center;
       height: 60px;
     }
+    /* ── Modal ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: #fff;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 860px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .modal-title { font-weight: 600; color: var(--primary); }
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-muted);
+      line-height: 1;
+    }
+    .modal-close:hover { color: var(--text); }
+    .modal iframe {
+      flex: 1;
+      border: none;
+      min-height: 70vh;
+    }
+
+    /* ── Cert Cards ── */
+    .cert-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.2rem;
+    }
+    .cert-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.4rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.6rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .cert-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 6px 20px rgba(33,150,243,0.15);
+      transform: translateY(-2px);
+    }
+    .cert-card-icon { font-size: 2rem; }
+    .cert-card-name {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .cert-card-view {
+      font-size: 0.78rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
     nav a {
       text-decoration: none;
       color: var(--text-muted);
@@ -457,6 +543,7 @@
     <li><a href="#experience">Experience</a></li>
     <li><a href="#education">Education</a></li>
     <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#cert-gallery">Gallery</a></li>
     <li><a href="#contact" class="nav-cta">Hire Me</a></li>
   </ul>
 </nav>
@@ -670,6 +757,66 @@
   </div>
 </section>
 
+<!-- Certificate Gallery -->
+<section class="section" id="cert-gallery">
+  <p class="section-title">Certificate Gallery</p>
+  <div class="divider"></div>
+  <p class="section-subtitle">Click any certificate to view it.</p>
+  <div class="cert-cards-grid">
+    <div class="cert-card" onclick="openCert('certificates/CoreJAVA.pdf', 'Core Java')">
+      <div class="cert-card-icon">☕</div>
+      <div class="cert-card-name">Core Java</div>
+      <div class="cert-card-view">↗ View Certificate</div>
+    </div>
+    <div class="cert-card" onclick="openCert('certificates/CucumberBDD.pdf', 'Cucumber BDD')">
+      <div class="cert-card-icon">🥒</div>
+      <div class="cert-card-name">Cucumber BDD</div>
+      <div class="cert-card-view">↗ View Certificate</div>
+    </div>
+    <div class="cert-card" onclick="openCert('certificates/GenAI Certification.pdf', 'Gen AI Certification')">
+      <div class="cert-card-icon">🤖</div>
+      <div class="cert-card-name">Gen AI Certification</div>
+      <div class="cert-card-view">↗ View Certificate</div>
+    </div>
+    <div class="cert-card" onclick="openCert('certificates/JIRA&Agile.pdf', 'JIRA & Agile')">
+      <div class="cert-card-icon">📋</div>
+      <div class="cert-card-name">JIRA &amp; Agile</div>
+      <div class="cert-card-view">↗ View Certificate</div>
+    </div>
+    <div class="cert-card" onclick="openCert('certificates/Playwright_Certification.pdf', 'Playwright')">
+      <div class="cert-card-icon">🎭</div>
+      <div class="cert-card-name">Playwright</div>
+      <div class="cert-card-view">↗ View Certificate</div>
+    </div>
+    <div class="cert-card" onclick="openCert('certificates/RestAPI_RestAssured.pdf', 'REST API & RestAssured')">
+      <div class="cert-card-icon">🔌</div>
+      <div class="cert-card-name">REST API &amp; RestAssured</div>
+      <div class="cert-card-view">↗ View Certificate</div>
+    </div>
+    <div class="cert-card" onclick="openCert('certificates/RobotFramework_Python_Selenium.pdf', 'Robot Framework, Python & Selenium')">
+      <div class="cert-card-icon">🦾</div>
+      <div class="cert-card-name">Robot Framework, Python &amp; Selenium</div>
+      <div class="cert-card-view">↗ View Certificate</div>
+    </div>
+    <div class="cert-card" onclick="openCert('certificates/TestNG.pdf', 'TestNG')">
+      <div class="cert-card-icon">✅</div>
+      <div class="cert-card-name">TestNG</div>
+      <div class="cert-card-view">↗ View Certificate</div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal-overlay" id="certModal" onclick="closeCertOnOverlay(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="modalTitle"></span>
+      <button class="modal-close" onclick="closeCert()">✕</button>
+    </div>
+    <iframe id="modalFrame" src=""></iframe>
+  </div>
+</div>
+
 <!-- Availability -->
 <section class="availability" id="contact">
   <h2>Open to Opportunities</h2>
@@ -687,5 +834,22 @@
   <p>&copy; 2026 Nalini · QA Engineer · Seattle, WA</p>
 </footer>
 
+<script>
+  function openCert(path, title) {
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalFrame').src = path;
+    document.getElementById('certModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCert() {
+    document.getElementById('certModal').classList.remove('open');
+    document.getElementById('modalFrame').src = '';
+    document.body.style.overflow = '';
+  }
+  function closeCertOnOverlay(e) {
+    if (e.target === document.getElementById('certModal')) closeCert();
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCert(); });
+</script>
 </body>
 </html>
