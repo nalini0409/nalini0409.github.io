@@ -155,8 +155,7 @@
     .hero {
       background: linear-gradient(135deg, var(--primary) 0%, #1565c0 60%, #0d47a1 100%);
       color: #fff;
-      padding: 5rem 2rem 4rem;
-      text-align: center;
+      padding: 3.5rem 2rem;
       position: relative;
       overflow: hidden;
     }
@@ -166,7 +165,16 @@
       inset: 0;
       background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     }
-    .hero-content { position: relative; max-width: 700px; margin: 0 auto; }
+    .hero-grid {
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    .hero-content { text-align: center; }
     .hero-badge {
       display: inline-flex;
       align-items: center;
@@ -179,7 +187,7 @@
       font-weight: 600;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
     }
     .hero-badge .dot {
       width: 8px; height: 8px;
@@ -192,31 +200,93 @@
       50% { opacity: 0.4; }
     }
     .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 700;
       letter-spacing: -0.02em;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
     .hero .title {
-      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
       opacity: 0.85;
       font-weight: 400;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
     }
     .hero .location {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.4rem;
-      opacity: 0.75;
-      font-size: 0.9rem;
-      margin-bottom: 2.5rem;
+      opacity: 0.7;
+      font-size: 0.82rem;
+      margin-bottom: 1.8rem;
     }
     .hero-actions {
       display: flex;
       gap: 1rem;
       justify-content: center;
       flex-wrap: wrap;
+    }
+
+    /* hero side panels */
+    .hero-left, .hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+    .hero-stat-card {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 10px;
+      padding: 0.9rem 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+    .hero-stat-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .hero-stat-value {
+      font-size: 1.2rem;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+    .hero-stat-label {
+      font-size: 0.75rem;
+      opacity: 0.7;
+      margin-top: 0.1rem;
+    }
+    .hero-skill-card {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 10px;
+      padding: 0.9rem 1.1rem;
+    }
+    .hero-skill-card h4 {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      opacity: 0.65;
+      margin-bottom: 0.6rem;
+    }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .hero-tag {
+      background: rgba(255,255,255,0.15);
+      border-radius: 20px;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-left, .hero-right { flex-direction: row; flex-wrap: wrap; }
+      .hero-stat-card, .hero-skill-card { flex: 1; min-width: 140px; }
     }
     .btn {
       padding: 0.7rem 1.8rem;
@@ -552,21 +622,89 @@
 
 <!-- Hero -->
 <header class="hero">
-  <div class="hero-content">
-    <div class="hero-badge">
-      <span class="dot"></span>
-      Available for Contract Roles
+  <div class="hero-grid">
+
+    <!-- Left: Key Stats -->
+    <div class="hero-left">
+      <div class="hero-stat-card">
+        <div class="hero-stat-icon">📅</div>
+        <div>
+          <div class="hero-stat-value">7 Years</div>
+          <div class="hero-stat-label">QA Experience</div>
+        </div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="hero-stat-icon">🤖</div>
+        <div>
+          <div class="hero-stat-value">150+</div>
+          <div class="hero-stat-label">Test Cases Automated</div>
+        </div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="hero-stat-icon">📉</div>
+        <div>
+          <div class="hero-stat-value">40% faster</div>
+          <div class="hero-stat-label">Regression Cycles</div>
+        </div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="hero-stat-icon">✅</div>
+        <div>
+          <div class="hero-stat-value">70% coverage</div>
+          <div class="hero-stat-label">Regression Suite</div>
+        </div>
+      </div>
     </div>
-    <h1>Nalini</h1>
-    <p class="title">Sr. QA Engineer &amp; Automation Specialist</p>
-    <p class="location">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-      Seattle, WA &nbsp;·&nbsp; Authorized to work in the U.S. — No sponsorship required
-    </p>
-    <div class="hero-actions">
-      <a href="#experience" class="btn btn-white">View My Work</a>
-      <a href="#contact" class="btn btn-outline">Get In Touch</a>
+
+    <!-- Center: Name & Title -->
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Available for Contract Roles
+      </div>
+      <h1>Nalini</h1>
+      <p class="title">Sr. QA Engineer &amp; Automation Specialist</p>
+      <p class="location">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Seattle, WA &nbsp;·&nbsp; No sponsorship required
+      </p>
+      <div class="hero-actions">
+        <a href="#experience" class="btn btn-white">View My Work</a>
+        <a href="#contact" class="btn btn-outline">Get In Touch</a>
+      </div>
     </div>
+
+    <!-- Right: Top Skills & Availability -->
+    <div class="hero-right">
+      <div class="hero-skill-card">
+        <h4>Core Skills</h4>
+        <div class="hero-tags">
+          <span class="hero-tag">Selenium</span>
+          <span class="hero-tag">Playwright</span>
+          <span class="hero-tag">Robot Framework</span>
+          <span class="hero-tag">TestNG</span>
+          <span class="hero-tag">REST Assured</span>
+          <span class="hero-tag">Postman</span>
+        </div>
+      </div>
+      <div class="hero-skill-card">
+        <h4>Open To</h4>
+        <div class="hero-tags">
+          <span class="hero-tag">Contract</span>
+          <span class="hero-tag">Contract-to-Hire</span>
+          <span class="hero-tag">Remote</span>
+          <span class="hero-tag">Seattle</span>
+        </div>
+      </div>
+      <div class="hero-skill-card">
+        <h4>Areas of Interest</h4>
+        <div class="hero-tags">
+          <span class="hero-tag">Gen AI for Testing</span>
+          <span class="hero-tag">Testing Gen AI Systems</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 </header>
 
