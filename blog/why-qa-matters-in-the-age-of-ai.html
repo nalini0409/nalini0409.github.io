@@ -240,11 +240,11 @@
 <article>
 
   <p>
-    Artificial intelligence is rewriting — quite literally — how software gets built. GitHub Copilot, ChatGPT, Gemini, and a growing ecosystem of AI coding assistants now generate thousands of lines of production code every day. For many teams, the velocity gains are real and impressive. But velocity without quality is just a faster way to ship problems.
+    I've been in QA for seven years now, and I can't count how many times someone has asked me whether my job is on the way out. Lately the question is coming up more than ever, because AI coding tools are everywhere. GitHub Copilot, ChatGPT, Gemini, you name it. Developers are using them daily to write production code faster than ever before.
   </p>
 
   <p>
-    There is a term quietly spreading through engineering circles: <strong>"AI slop"</strong> — code that looks plausible, compiles cleanly, and passes a quick manual review, but harbors subtle logic errors, security gaps, or untested edge cases that only surface in production. The irony is sharp: the tools designed to accelerate development are creating a new class of bugs that are harder to spot precisely because they look so polished.
+    And honestly? The speed gains are real. I've seen it firsthand. But here's what I've also seen: a new kind of bug that's harder to catch than anything we dealt with before. People in engineering circles have started calling it <strong>"AI slop"</strong>. Code that looks totally fine. It compiles, it passes a quick read-through, and then six weeks later it causes a production incident that nobody can explain at first glance.
   </p>
 
   <div class="pullquote">
@@ -254,68 +254,72 @@
   <h2>The Confidence Problem</h2>
 
   <p>
-    One of the most dangerous side effects of AI code generation is misplaced confidence. When a developer writes code by hand, there is implicit ownership — they tend to scrutinize it because they know its rough edges. When an AI produces the same output in seconds, there is a subtle psychological shift: it <em>looks</em> authoritative. Developers may review it less critically, and non-technical stakeholders may assume it has already been "checked."
+    Here's something I find really interesting about how people treat AI-generated code. When a developer writes something themselves, they know where the bodies are buried. They'll squint at the tricky parts because they remember struggling with them. But when an AI produces the same code in five seconds, something shifts. It <em>looks</em> authoritative. Clean formatting, proper variable names, no obvious smells. People review it less carefully, and stakeholders sometimes assume it must have already been validated somehow.
   </p>
 
   <p>
-    In reality, AI models are trained to produce statistically probable code, not provably correct code. They hallucinate library methods that do not exist, implement business logic based on pattern matching rather than actual requirements, and miss domain-specific constraints that only a human (or a well-designed test suite) would catch.
+    But AI models aren't trying to be correct. They're trying to be plausible. They'll invent library methods that don't exist, implement business logic based on patterns from training data rather than your actual requirements, and completely miss the domain-specific edge cases that only someone who's worked in your industry would think to check.
   </p>
 
   <div class="callout">
-    <strong>Real-world example:</strong> AI assistants have been observed generating SQL queries that appear correct but have off-by-one errors in date range filters — the kind of bug that sails through code review and only shows up in end-of-quarter reporting.
+    <strong>Real example:</strong> AI assistants have generated SQL queries that look perfectly correct but have off-by-one errors in date range filters. That kind of bug sails through code review and only shows up in end-of-quarter reporting. By then the damage is done.
   </div>
 
   <h2>Where Automation Testing Becomes the Safety Net</h2>
 
   <p>
-    This is where structured QA engineering — especially automation — becomes not just valuable but essential. A well-designed test suite does not care who wrote the code under test. It validates behavior against expected outcomes, consistently and without fatigue.
+    This is where good QA work really shines. A well-built test suite doesn't care who wrote the code it's testing. It doesn't get fooled by clean formatting or confident-sounding variable names. It checks whether the thing actually works the way it's supposed to, every single time, without getting tired.
   </p>
 
-  <p>Key testing practices that become critical in AI-heavy development pipelines:</p>
+  <p>A few practices I think matter a lot right now:</p>
 
   <ul>
-    <li><strong>Behavior-driven test cases</strong> written before or alongside AI-generated code anchor the implementation to actual requirements, not the AI's best guess at them.</li>
-    <li><strong>Comprehensive regression suites</strong> catch regressions introduced when AI tools refactor or "improve" existing code without full context of downstream dependencies.</li>
-    <li><strong>API contract testing</strong> is especially important as AI-generated services may produce subtly different response shapes or status codes than the consuming code expects.</li>
-    <li><strong>Boundary and edge case testing</strong> targets exactly the scenarios that AI models statistically underfit — unusual inputs, empty states, concurrency, and failure paths.</li>
-    <li><strong>Security-focused test cases</strong> that check for injection vulnerabilities, authentication bypasses, and data exposure — areas where AI-generated code frequently introduces risk without obvious code smells.</li>
+    <li><strong>Behavior-driven test cases written upfront</strong> are your best defense. If you define what the code should do before the AI writes it, you have something concrete to test against. Without that, you're basically validating the AI's interpretation of the requirements, which may or may not match what the business actually wanted.</li>
+    <li><strong>Regression suites</strong> become even more important when AI tools are refactoring existing code. The AI doesn't always know what other parts of the system depend on what it's changing.</li>
+    <li><strong>API contract testing</strong> is something I've leaned on heavily. AI-generated services sometimes produce different response shapes or status codes than what the consuming code expects, and it's not always obvious until something downstream breaks.</li>
+    <li><strong>Edge case and boundary testing</strong> is where AI models fall short most often. Unusual inputs, empty states, race conditions, failure paths. These are exactly the things that get skipped when someone's moving fast.</li>
+    <li><strong>Security testing</strong> deserves its own mention. Injection vulnerabilities, auth bypasses, data exposure issues. AI-generated code can introduce these without any obvious warning signs in the code itself.</li>
   </ul>
 
-  <h2>The Shift From Gatekeeper to Strategic Partner</h2>
+  <h2>QA Is Moving Earlier, Not Later</h2>
 
   <p>
-    For years, QA was positioned as the final gate before release — a necessary checkpoint, but often treated as a bottleneck. The AI era changes this dynamic. Quality engineers are now most valuable when embedded earlier in the development loop: defining acceptance criteria before a single line of AI-assisted code is written, reviewing AI outputs for testability, and building automation infrastructure that keeps pace with accelerated delivery.
+    For a long time, QA was the last stop before a release. You'd get a build, run your tests, file some bugs, and hope they got fixed before the deadline. It worked, kind of, but it always felt like we were playing catch-up.
+  </p>
+
+  <p>
+    That model doesn't work when teams are shipping AI-assisted code at twice the speed. The only way to keep up is to get involved earlier. Defining acceptance criteria before a single line of code gets written. Reviewing AI-generated outputs for testability. Making sure the automation infrastructure can scale with the pace of development. That's where QA engineers are adding the most value right now.
   </p>
 
   <div class="highlight-box">
-    Teams that invest in automation-first QA practices are seeing AI coding tools pay off. Teams that skip QA are accumulating technical and quality debt at an unprecedented speed.
+    Teams that build automation-first QA practices are the ones actually getting value out of AI coding tools. Teams that skip QA are just accumulating problems faster than before.
   </div>
 
-  <h2>AI as a QA Tool Too</h2>
+  <h2>AI Helps on the Testing Side Too</h2>
 
   <p>
-    It would be incomplete to frame AI purely as a source of quality risk. The same capabilities that generate application code can be directed toward testing: generating diverse test data, suggesting edge cases a human might miss, or drafting initial test scripts that engineers then refine. The discipline of prompt engineering for test generation is emerging as a real and valuable skill set.
+    I want to be fair here. AI isn't just creating work for QA teams, it's also giving us better tools. I've used it to generate edge case test data I wouldn't have thought of on my own, to draft initial test scripts that I then refine, and to spot patterns in test failures that would have taken me much longer to notice manually.
   </p>
 
   <p>
-    The key insight is that AI-assisted testing and AI-generated code must grow together. Trusting one without the other is where organizations get into trouble.
+    The way I think about it: AI-assisted development and AI-assisted testing need to grow at the same pace. If your dev team is using AI to ship twice as fast but your testing hasn't changed, you have a problem. The answer isn't to slow down development. It's to bring testing up to speed.
   </p>
 
-  <h2>The Bottom Line</h2>
+  <h2>So No, Testing Isn't Dying</h2>
 
   <p>
-    Software quality was never an afterthought — but it has rarely been more strategically important than it is today. As AI tools raise the ceiling of what a small development team can build, they also raise the floor of how much can go wrong. Quality engineers who understand automation, who can work at the intersection of testing and AI tooling, and who can translate business requirements into reliable test coverage are not being made redundant by AI. They are becoming more essential.
+    If anything, the conversations I'm having with teams right now are more serious about quality than anything I've experienced in my career. Because the stakes are higher. AI tools let small teams build things that used to require much larger teams. That's exciting. But it also means there's more surface area for things to go wrong, and less institutional memory about where the risky parts are.
   </p>
 
   <p>
-    The best code is code you can trust. And trust, in software, is built through testing.
+    That's not a reason to fear AI. It's a reason to invest in the people and practices that make sure what gets shipped actually works. Software quality has always mattered. Right now it just matters more visibly than it used to.
   </p>
 
   <div class="author-card">
     <div class="author-avatar">N</div>
     <div>
       <div class="author-name">Nalini</div>
-      <div class="author-bio">Sr. QA Engineer with 6+ years building automation frameworks using Selenium, Robot Framework, and Playwright. Based in Seattle, open to contract and contract-to-hire roles.</div>
+      <div class="author-bio">Sr. QA Engineer with 7 years building automation frameworks using Selenium, Robot Framework, and Playwright. Based in Seattle, open to contract and contract-to-hire roles.</div>
       <div style="margin-top:0.5rem; font-size:0.82rem; color:#5a6a7a;">
         <a href="mailto:nalini.hajipur@gmail.com" style="color:#2196f3; text-decoration:none;">nalini.hajipur@gmail.com</a>
         &nbsp;·&nbsp;
