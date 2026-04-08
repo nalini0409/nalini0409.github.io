@@ -314,25 +314,41 @@
     .section {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 4rem 2rem;
+      padding: 2.5rem 2rem;
     }
     .section-title {
-      font-size: 1.7rem;
+      font-size: 1.4rem;
       font-weight: 700;
       color: var(--primary);
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.3rem;
     }
     .section-subtitle {
       color: var(--text-muted);
-      margin-bottom: 2.5rem;
-      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
     }
     .divider {
-      width: 48px;
-      height: 4px;
+      width: 36px;
+      height: 3px;
       background: var(--accent);
       border-radius: 2px;
-      margin-bottom: 2rem;
+      margin-bottom: 1.2rem;
+    }
+    /* ── Two-column section layout ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    .two-col-wide {
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .two-col, .two-col-wide { grid-template-columns: 1fr; }
     }
 
     /* ── Summary ── */
@@ -341,10 +357,10 @@
       border: 1px solid var(--border);
       border-left: 4px solid var(--accent);
       border-radius: 10px;
-      padding: 2rem;
-      font-size: 1.05rem;
+      padding: 1.2rem 1.5rem;
+      font-size: 0.97rem;
       color: var(--text);
-      line-height: 1.8;
+      line-height: 1.75;
     }
 
     /* ── Stats ── */
@@ -377,14 +393,14 @@
     /* ── Skills ── */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
     }
     .skill-card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 1.5rem;
+      padding: 1rem 1.1rem;
       transition: box-shadow 0.2s, transform 0.2s;
     }
     .skill-card:hover {
@@ -392,8 +408,8 @@
       transform: translateY(-2px);
     }
     .skill-card-icon {
-      font-size: 1.8rem;
-      margin-bottom: 0.8rem;
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
     }
     .skill-card h3 {
       font-size: 0.85rem;
@@ -416,12 +432,12 @@
 
     /* ── Experience ── */
     .experience-bg { background: #f1f5f9; }
-    .timeline { display: flex; flex-direction: column; gap: 2rem; }
+    .timeline { display: flex; flex-direction: column; gap: 1.2rem; }
     .exp-card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 2rem;
+      padding: 1.4rem 1.6rem;
       position: relative;
       transition: box-shadow 0.2s;
     }
@@ -501,10 +517,10 @@
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 1.8rem;
+      padding: 1.2rem 1.4rem;
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.4rem;
       transition: box-shadow 0.2s;
     }
     .edu-card:hover { box-shadow: 0 8px 24px rgba(15,76,129,0.1); }
@@ -716,23 +732,23 @@
 </header>
 
 
-<!-- About -->
+<!-- About + Skills -->
 <section class="section" id="about">
-  <p class="section-title">Professional Summary</p>
-  <div class="divider"></div>
-  <div class="summary-card">
-    Automation-focused QA Engineer with 7 years of experience in Selenium, Robot Framework, and API testing.
-    Built scalable automation frameworks that reduced regression cycles by up to 40%. Experienced in Agile
-    environments and CI/CD integration using Jenkins and GitHub Actions. Based in Seattle and available for
-    contract or contract-to-hire roles.
-  </div>
-</section>
-
-<!-- Skills -->
-<section class="section" id="skills">
-  <p class="section-title">Technical Skills</p>
-  <div class="divider"></div>
-  <div class="skills-grid">
+  <div class="two-col-wide">
+    <div id="summary-col">
+      <p class="section-title">Professional Summary</p>
+      <div class="divider"></div>
+      <div class="summary-card">
+        Automation-focused QA Engineer with 7 years of experience in Selenium, Robot Framework, and API testing.
+        Built scalable automation frameworks that reduced regression cycles by up to 40%. Experienced in Agile
+        environments and CI/CD integration using Jenkins and GitHub Actions. Based in Seattle and available for
+        contract or contract-to-hire roles.
+      </div>
+    </div>
+    <div id="skills" style="scroll-margin-top:70px">
+      <p class="section-title">Technical Skills</p>
+      <div class="divider"></div>
+      <div class="skills-grid">
     <div class="skill-card">
       <div class="skill-card-icon">🤖</div>
       <h3>Automation</h3>
@@ -793,6 +809,8 @@
       <div class="tags">
         <span class="tag">Gen AI for Testing</span>
         <span class="tag">Testing Gen AI Systems</span>
+      </div>
+    </div>
       </div>
     </div>
   </div>
@@ -875,114 +893,105 @@
   </div>
 </section>
 
-<!-- Education -->
+<!-- Education + Certifications -->
 <section class="section" id="education">
-  <p class="section-title">Education</p>
-  <div class="divider"></div>
-  <div class="edu-grid">
-    <div class="edu-card">
-      <div class="edu-icon">🎓</div>
-      <div class="edu-degree">Bachelor of Technology — Information Technology</div>
-      <div class="edu-school">B. C. Roy Engineering College, Durgapur, West Bengal, India</div>
-      <span class="edu-period">2013 – 2017</span>
-    </div>
-    <div class="edu-card">
-      <div class="edu-icon">📜</div>
-      <div class="edu-degree">Certificate in Project Management</div>
-      <div class="edu-school">University of Washington, Seattle</div>
-      <span class="edu-period">2025 – Present</span>
-    </div>
-  </div>
-</section>
-
-<!-- Certifications -->
-<section class="certs-bg" id="certifications">
-  <div class="section">
-    <p class="section-title">Certifications &amp; Training</p>
-    <div class="divider"></div>
-    <div class="cert-chips">
-      <div class="cert-chip">Selenium</div>
-      <div class="cert-chip">Agile</div>
-      <div class="cert-chip">JIRA</div>
-      <div class="cert-chip">Robot Framework</div>
-      <div class="cert-chip">Cucumber</div>
-      <div class="cert-chip">TestNG</div>
-      <div class="cert-chip">Gen AI for Testing</div>
-      <div class="cert-chip">AI Agents for Testing</div>
-    </div>
-  </div>
-</section>
-
-<!-- Projects -->
-<section class="section" id="projects">
-  <p class="section-title">GitHub Projects</p>
-  <div class="divider"></div>
-  <p class="section-subtitle">Real automation frameworks — browse the source code.</p>
-  <div class="skills-grid">
-
-    <div class="skill-card">
-      <div class="skill-card-icon">☕</div>
-      <h3>Selenium + TestNG Framework</h3>
-      <div class="tags" style="margin-bottom:0.8rem">
-        <span class="tag">Java</span>
-        <span class="tag">Selenium</span>
-        <span class="tag">TestNG</span>
-        <span class="tag">Maven</span>
-        <span class="tag">POM</span>
-      </div>
-      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem;">Scalable Page Object Model framework with thread-safe driver management and parallel test execution.</p>
-      <a href="https://github.com/nalini0409/selenium-testng-framework" target="_blank" style="color:var(--accent);font-size:0.85rem;font-weight:600;text-decoration:none;">View on GitHub →</a>
-    </div>
-
-    <div class="skill-card">
-      <div class="skill-card-icon">🦾</div>
-      <h3>Robot Framework Suite</h3>
-      <div class="tags" style="margin-bottom:0.8rem">
-        <span class="tag">Python</span>
-        <span class="tag">Robot Framework</span>
-        <span class="tag">SeleniumLibrary</span>
-      </div>
-      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem;">Keyword-driven reusable automation suite covering login and product workflows with 70%+ regression coverage.</p>
-      <a href="https://github.com/nalini0409/robot-framework-automation" target="_blank" style="color:var(--accent);font-size:0.85rem;font-weight:600;text-decoration:none;">View on GitHub →</a>
-    </div>
-
-    <div class="skill-card">
-      <div class="skill-card-icon">🎭</div>
-      <h3>Playwright + API Testing</h3>
-      <div class="tags" style="margin-bottom:0.8rem">
-        <span class="tag">Python</span>
-        <span class="tag">Playwright</span>
-        <span class="tag">REST API</span>
-        <span class="tag">pytest</span>
-      </div>
-      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem;">End-to-end UI tests with Playwright and full CRUD API validation using a reusable REST client.</p>
-      <a href="https://github.com/nalini0409/playwright-api-testing" target="_blank" style="color:var(--accent);font-size:0.85rem;font-weight:600;text-decoration:none;">View on GitHub →</a>
-    </div>
-
-  </div>
-</section>
-
-<!-- Blog -->
-<section class="experience-bg" id="blog">
-  <div class="section">
-    <p class="section-title">Blog</p>
-    <div class="divider"></div>
-    <a href="blog/why-qa-matters-in-the-age-of-ai.html" style="text-decoration:none">
-      <div class="exp-card" style="cursor:pointer; max-width:680px;">
-        <div style="display:flex; gap:0.6rem; flex-wrap:wrap; margin-bottom:1rem;">
-          <span class="exp-period">Quality Assurance</span>
-          <span class="exp-period">AI &amp; Testing</span>
-          <span class="exp-period" style="margin-left:auto">March 2026 · 5 min read</span>
+  <div class="two-col">
+    <div>
+      <p class="section-title">Education</p>
+      <div class="divider"></div>
+      <div class="edu-grid" style="grid-template-columns:1fr;">
+        <div class="edu-card">
+          <div class="edu-icon">🎓</div>
+          <div class="edu-degree">Bachelor of Technology — Information Technology</div>
+          <div class="edu-school">B. C. Roy Engineering College, Durgapur, India</div>
+          <span class="edu-period">2013 – 2017</span>
         </div>
-        <div class="exp-title" style="font-size:1.2rem; margin-bottom:0.5rem;">
-          Is Software Testing Dying? To the Contrary, It's More Critical Than Ever
+        <div class="edu-card">
+          <div class="edu-icon">📜</div>
+          <div class="edu-degree">Certificate in Project Management</div>
+          <div class="edu-school">University of Washington, Seattle</div>
+          <span class="edu-period">2025 – Present</span>
         </div>
-        <p style="color:var(--text-muted); font-size:0.93rem; margin-bottom:1rem;">
-          AI coding tools are shipping code faster than ever — but speed without quality is just a faster way to deliver bugs. Here's why automation-first QA is the real safeguard against AI slop.
-        </p>
-        <span style="color:var(--accent); font-weight:600; font-size:0.88rem;">Read article →</span>
       </div>
-    </a>
+    </div>
+    <div id="certifications" style="scroll-margin-top:70px">
+      <p class="section-title">Certifications &amp; Training</p>
+      <div class="divider"></div>
+      <div class="cert-chips">
+        <div class="cert-chip">Selenium</div>
+        <div class="cert-chip">Agile</div>
+        <div class="cert-chip">JIRA</div>
+        <div class="cert-chip">Robot Framework</div>
+        <div class="cert-chip">Cucumber</div>
+        <div class="cert-chip">TestNG</div>
+        <div class="cert-chip">Gen AI for Testing</div>
+        <div class="cert-chip">AI Agents for Testing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects + Blog -->
+<section class="experience-bg" id="projects">
+  <div class="section">
+    <div class="two-col">
+      <div>
+        <p class="section-title">GitHub Projects</p>
+        <div class="divider"></div>
+        <div style="display:flex;flex-direction:column;gap:0.8rem;">
+          <div class="skill-card">
+            <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem;">
+              <span style="font-size:1.2rem;">☕</span>
+              <h3 style="margin:0;font-size:0.82rem;">Selenium + TestNG Framework</h3>
+            </div>
+            <div class="tags" style="margin-bottom:0.6rem">
+              <span class="tag">Java</span><span class="tag">Selenium</span><span class="tag">TestNG</span><span class="tag">Maven</span>
+            </div>
+            <a href="https://github.com/nalini0409/selenium-testng-framework" target="_blank" style="color:var(--accent);font-size:0.82rem;font-weight:600;text-decoration:none;">View on GitHub →</a>
+          </div>
+          <div class="skill-card">
+            <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem;">
+              <span style="font-size:1.2rem;">🦾</span>
+              <h3 style="margin:0;font-size:0.82rem;">Robot Framework Suite</h3>
+            </div>
+            <div class="tags" style="margin-bottom:0.6rem">
+              <span class="tag">Python</span><span class="tag">Robot Framework</span><span class="tag">SeleniumLibrary</span>
+            </div>
+            <a href="https://github.com/nalini0409/robot-framework-automation" target="_blank" style="color:var(--accent);font-size:0.82rem;font-weight:600;text-decoration:none;">View on GitHub →</a>
+          </div>
+          <div class="skill-card">
+            <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem;">
+              <span style="font-size:1.2rem;">🎭</span>
+              <h3 style="margin:0;font-size:0.82rem;">Playwright + API Testing</h3>
+            </div>
+            <div class="tags" style="margin-bottom:0.6rem">
+              <span class="tag">Python</span><span class="tag">Playwright</span><span class="tag">REST API</span><span class="tag">pytest</span>
+            </div>
+            <a href="https://github.com/nalini0409/playwright-api-testing" target="_blank" style="color:var(--accent);font-size:0.82rem;font-weight:600;text-decoration:none;">View on GitHub →</a>
+          </div>
+        </div>
+      </div>
+      <div id="blog" style="scroll-margin-top:70px">
+        <p class="section-title">Blog</p>
+        <div class="divider"></div>
+        <a href="blog/why-qa-matters-in-the-age-of-ai.html" style="text-decoration:none">
+          <div class="exp-card" style="cursor:pointer;">
+            <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:0.8rem;">
+              <span class="exp-period">Quality Assurance</span>
+              <span class="exp-period">AI &amp; Testing</span>
+              <span class="exp-period" style="margin-left:auto">March 2026 · 5 min</span>
+            </div>
+            <div class="exp-title" style="font-size:1.05rem; margin-bottom:0.5rem;">
+              Is Software Testing Dying? To the Contrary, It's More Critical Than Ever
+            </div>
+            <p style="color:var(--text-muted); font-size:0.88rem; margin-bottom:0.8rem;">
+              AI coding tools are shipping code faster than ever. Here's why automation-first QA is the real safeguard against AI slop.
+            </p>
+            <span style="color:var(--accent); font-weight:600; font-size:0.85rem;">Read article →</span>
+          </div>
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
