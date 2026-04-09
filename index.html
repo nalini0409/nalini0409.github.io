@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nalini Kumari | QA Engineer</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css"/>
   <style>
     :root {
       --primary: #1e293b;
@@ -407,27 +408,72 @@
       box-shadow: 0 8px 24px rgba(15,76,129,0.1);
       transform: translateY(-2px);
     }
-    .skill-card-icon {
-      font-size: 1.4rem;
-      margin-bottom: 0.5rem;
-    }
+    .skill-card-icon { font-size: 1.4rem; margin-bottom: 0.5rem; }
     .skill-card h3 {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 0.8rem;
+      font-size: 0.85rem; font-weight: 600; color: var(--text-muted);
+      text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.8rem;
     }
     .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
     .tag {
-      background: var(--accent-light);
-      color: var(--primary);
-      border: 1px solid #bae6fd;
-      padding: 0.25rem 0.7rem;
-      border-radius: 20px;
+      background: var(--accent-light); color: var(--primary);
+      border: 1px solid #bae6fd; padding: 0.25rem 0.7rem;
+      border-radius: 20px; font-size: 0.8rem; font-weight: 500;
+    }
+
+    /* ── Skills Table ── */
+    .skills-table {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .skill-row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      min-height: 48px;
+    }
+    .skill-row:last-child { border-bottom: none; }
+    .skill-category {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1rem;
+      background: #f8fafc;
+      border-right: 1px solid var(--border);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      height: 100%;
+    }
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0.6rem 1rem;
+      align-items: center;
+    }
+    .skill-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.25rem 0.6rem;
       font-size: 0.8rem;
       font-weight: 500;
+      color: var(--text);
+      white-space: nowrap;
+    }
+    .skill-pill i { font-size: 1rem; }
+    .skill-pill img { width: 16px; height: 16px; object-fit: contain; }
+    @media (max-width: 600px) {
+      .skill-row { grid-template-columns: 1fr; }
+      .skill-category { border-right: none; border-bottom: 1px solid var(--border); }
     }
 
     /* ── Experience ── */
@@ -748,69 +794,70 @@
 <section class="section" id="skills">
   <p class="section-title">Technical Skills</p>
   <div class="divider"></div>
-  <div class="skills-grid">
-    <div class="skill-card">
-      <div class="skill-card-icon">🤖</div>
-      <h3>Automation</h3>
-      <div class="tags">
-        <span class="tag">Selenium WebDriver</span>
-        <span class="tag">TestNG</span>
-        <span class="tag">Robot Framework</span>
-        <span class="tag">Cucumber</span>
-        <span class="tag">Playwright</span>
+  <div class="skills-table">
+
+    <div class="skill-row">
+      <div class="skill-category">🤖 Automation</div>
+      <div class="skill-pills">
+        <span class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/selenium/selenium-original.svg" alt="Selenium"/>Selenium</span>
+        <span class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/playwright/playwright-original.svg" alt="Playwright"/>Playwright</span>
+        <span class="skill-pill">🤖 Robot Framework</span>
+        <span class="skill-pill">🥒 Cucumber</span>
+        <span class="skill-pill">✅ TestNG</span>
       </div>
     </div>
-    <div class="skill-card">
-      <div class="skill-card-icon">🔌</div>
-      <h3>API Testing</h3>
-      <div class="tags">
-        <span class="tag">Postman</span>
-        <span class="tag">REST Assured</span>
-        <span class="tag">SOAP UI</span>
+
+    <div class="skill-row">
+      <div class="skill-category">🔌 API Testing</div>
+      <div class="skill-pills">
+        <span class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" alt="Postman"/>Postman</span>
+        <span class="skill-pill">🔗 REST Assured</span>
+        <span class="skill-pill">🧼 SOAP UI</span>
       </div>
     </div>
-    <div class="skill-card">
-      <div class="skill-card-icon">💻</div>
-      <h3>Languages</h3>
-      <div class="tags">
-        <span class="tag">Java</span>
-        <span class="tag">Python</span>
-        <span class="tag">SQL</span>
+
+    <div class="skill-row">
+      <div class="skill-category">💻 Languages</div>
+      <div class="skill-pills">
+        <span class="skill-pill"><i class="devicon-java-plain colored"></i>Java</span>
+        <span class="skill-pill"><i class="devicon-python-plain colored"></i>Python</span>
+        <span class="skill-pill"><i class="devicon-azuresqldatabase-plain colored"></i>SQL</span>
       </div>
     </div>
-    <div class="skill-card">
-      <div class="skill-card-icon">⚙️</div>
-      <h3>CI / CD</h3>
-      <div class="tags">
-        <span class="tag">Jenkins</span>
-        <span class="tag">GitHub Actions</span>
-        <span class="tag">Git</span>
+
+    <div class="skill-row">
+      <div class="skill-category">⚙️ CI / CD</div>
+      <div class="skill-pills">
+        <span class="skill-pill"><i class="devicon-jenkins-plain colored"></i>Jenkins</span>
+        <span class="skill-pill"><i class="devicon-github-original"></i>GitHub Actions</span>
+        <span class="skill-pill"><i class="devicon-git-plain colored"></i>Git</span>
       </div>
     </div>
-    <div class="skill-card">
-      <div class="skill-card-icon">🛠️</div>
-      <h3>Tools</h3>
-      <div class="tags">
-        <span class="tag">JIRA</span>
-        <span class="tag">Maven</span>
+
+    <div class="skill-row">
+      <div class="skill-category">🛠️ Tools</div>
+      <div class="skill-pills">
+        <span class="skill-pill"><i class="devicon-jira-plain colored"></i>JIRA</span>
+        <span class="skill-pill"><i class="devicon-maven-plain colored"></i>Maven</span>
       </div>
     </div>
-    <div class="skill-card">
-      <div class="skill-card-icon">☁️</div>
-      <h3>Cloud</h3>
-      <div class="tags">
-        <span class="tag">AWS</span>
-        <span class="tag">Azure DevOps</span>
+
+    <div class="skill-row">
+      <div class="skill-category">☁️ Cloud</div>
+      <div class="skill-pills">
+        <span class="skill-pill"><i class="devicon-amazonwebservices-plain-wordmark colored"></i>AWS</span>
+        <span class="skill-pill"><i class="devicon-azure-plain colored"></i>Azure DevOps</span>
       </div>
     </div>
-    <div class="skill-card">
-      <div class="skill-card-icon">✨</div>
-      <h3>Areas of Interest</h3>
-      <div class="tags">
-        <span class="tag">Gen AI for Testing</span>
-        <span class="tag">Testing Gen AI Systems</span>
+
+    <div class="skill-row">
+      <div class="skill-category">✨ Interests</div>
+      <div class="skill-pills">
+        <span class="skill-pill">🧠 Gen AI for Testing</span>
+        <span class="skill-pill">🔬 Testing Gen AI Systems</span>
       </div>
     </div>
+
   </div>
 </section>
 
