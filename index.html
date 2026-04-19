@@ -477,6 +477,46 @@
     .str-proficient { border-left: 3px solid #0891b2 !important; }
     .str-intermediate { border-left: 3px solid #94a3b8 !important; }
     .str-familiar { border-left: 3px solid #e2e8f0 !important; }
+    /* Split pill: skill + repo in one bar */
+    .split-pill {
+      display: inline-flex;
+      align-items: stretch;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      overflow: hidden;
+      font-size: 0.76rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .split-pill .pill-skill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.28rem;
+      padding: 0.15rem 0.5rem;
+      text-decoration: none;
+      color: inherit;
+    }
+    .split-pill .pill-repo {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.15rem 0.45rem;
+      border-left: 1px solid var(--border);
+      background: #f8fafc;
+      color: #64748b;
+      text-decoration: none;
+      font-size: 0.7rem;
+    }
+    .split-pill .pill-repo:hover { background: #f1f5f9; color: #1e293b; }
+    .split-pill img { width: 14px; height: 14px; object-fit: contain; }
+    .split-pill i { font-size: 0.95rem; line-height: 1; }
+    /* Cert background on split pill skill part */
+    .split-pill .pill-skill.has-cert { background: #fef9ec; color: #92400e; }
+    .split-pill .pill-skill.has-cert:hover { background: #fef3c7; }
+    /* Strength on split pill = left border of container */
+    .split-pill.str-expert     { border-left: 3px solid #0d9488; }
+    .split-pill.str-proficient { border-left: 3px solid #0891b2; }
+    .split-pill.str-intermediate { border-left: 3px solid #94a3b8; }
+    .split-pill.str-familiar   { border-left: 3px solid #e2e8f0; }
     /* Cert-backed: amber */
     a.skill-pill.has-cert {
       background: #fef9ec;
@@ -903,15 +943,23 @@
     <div class="skill-row">
       <div class="skill-category">🤖 Automation</div>
       <div class="skill-pills">
-        <a href="certificates/RobotFramework_Python_Selenium.pdf" target="_blank" class="skill-pill has-cert str-expert"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/selenium/selenium-original.svg" alt=""/>Selenium</a>
-        <a href="https://github.com/nalini0409/selenium-testng-framework" target="_blank" class="skill-pill has-github str-expert">↗ repo</a>
-        <a href="certificates/Playwright_Certification.pdf" target="_blank" class="skill-pill has-cert str-proficient"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/playwright/playwright-original.svg" alt=""/>Playwright</a>
-        <a href="https://github.com/nalini0409/playwright-api-testing" target="_blank" class="skill-pill has-github str-proficient">↗ repo</a>
-        <a href="certificates/RobotFramework_Python_Selenium.pdf" target="_blank" class="skill-pill has-cert str-expert"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Robot-framework-logo.png" style="width:14px;height:14px;object-fit:contain" alt=""/>Robot Framework</a>
-        <a href="https://github.com/nalini0409/robot-framework-automation" target="_blank" class="skill-pill has-github str-expert">↗ repo</a>
+        <span class="split-pill str-expert">
+          <a href="certificates/RobotFramework_Python_Selenium.pdf" target="_blank" class="pill-skill has-cert"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/selenium/selenium-original.svg" alt=""/>Selenium</a>
+          <a href="https://github.com/nalini0409/selenium-testng-framework" target="_blank" class="pill-repo">↗ repo</a>
+        </span>
+        <span class="split-pill str-proficient">
+          <a href="certificates/Playwright_Certification.pdf" target="_blank" class="pill-skill has-cert"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/playwright/playwright-original.svg" alt=""/>Playwright</a>
+          <a href="https://github.com/nalini0409/playwright-api-testing" target="_blank" class="pill-repo">↗ repo</a>
+        </span>
+        <span class="split-pill str-expert">
+          <a href="certificates/RobotFramework_Python_Selenium.pdf" target="_blank" class="pill-skill has-cert"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Robot-framework-logo.png" style="width:14px;height:14px;object-fit:contain" alt=""/>Robot Framework</a>
+          <a href="https://github.com/nalini0409/robot-framework-automation" target="_blank" class="pill-repo">↗ repo</a>
+        </span>
         <a href="certificates/CucumberBDD.pdf" target="_blank" class="skill-pill has-cert str-intermediate"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cucumber/cucumber-plain.svg" alt=""/>Cucumber</a>
-        <a href="certificates/TestNG.pdf" target="_blank" class="skill-pill has-cert str-expert"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="" style="opacity:0.7"/>TestNG</a>
-        <a href="https://github.com/nalini0409/selenium-testng-framework" target="_blank" class="skill-pill has-github str-expert">↗ repo</a>
+        <span class="split-pill str-expert">
+          <a href="certificates/TestNG.pdf" target="_blank" class="pill-skill has-cert"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="" style="opacity:0.7"/>TestNG</a>
+          <a href="https://github.com/nalini0409/selenium-testng-framework" target="_blank" class="pill-repo">↗ repo</a>
+        </span>
       </div>
     </div>
 
@@ -919,8 +967,10 @@
       <div class="skill-category">🔌 API Testing</div>
       <div class="skill-pills">
         <a href="certificates/RestAPI_RestAssured.pdf" target="_blank" class="skill-pill has-cert str-proficient"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" alt=""/>Postman</a>
-        <a href="certificates/RestAPI_RestAssured.pdf" target="_blank" class="skill-pill has-cert str-proficient"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="" style="opacity:0.7"/>REST Assured</a>
-        <a href="https://github.com/nalini0409/playwright-api-testing" target="_blank" class="skill-pill has-github str-proficient">↗ repo</a>
+        <span class="split-pill str-proficient">
+          <a href="certificates/RestAPI_RestAssured.pdf" target="_blank" class="pill-skill has-cert"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="" style="opacity:0.7"/>REST Assured</a>
+          <a href="https://github.com/nalini0409/playwright-api-testing" target="_blank" class="pill-repo">↗ repo</a>
+        </span>
         <span class="skill-pill str-intermediate"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xml/xml-original.svg" alt="" style="opacity:0.6"/>SOAP UI</span>
       </div>
     </div>
@@ -938,8 +988,8 @@
       <div class="skill-category">⚙️ CI / CD</div>
       <div class="skill-pills">
         <span class="skill-pill str-proficient"><i class="devicon-jenkins-plain colored"></i>Jenkins</span>
-        <a href="https://github.com/nalini0409" target="_blank" class="skill-pill has-github str-proficient"><i class="devicon-github-original"></i>GitHub Actions</a>
-        <a href="https://github.com/nalini0409" target="_blank" class="skill-pill has-github str-proficient"><i class="devicon-git-plain colored"></i>Git</a>
+        <a href="https://github.com/nalini0409" target="_blank" class="skill-pill has-github str-proficient"><i class="devicon-github-original"></i>GitHub Actions ↗</a>
+        <a href="https://github.com/nalini0409" target="_blank" class="skill-pill has-github str-proficient"><i class="devicon-git-plain colored"></i>Git ↗</a>
         <span class="skill-pill str-intermediate"><i class="devicon-maven-plain colored"></i>Maven</span>
       </div>
     </div>
