@@ -472,6 +472,11 @@
     }
     .skill-pill i { font-size: 0.95rem; line-height: 1; }
     .skill-pill img { width: 14px; height: 14px; object-fit: contain; }
+    /* Strength spectrum via left border */
+    .str-expert   { border-left: 3px solid #0d9488 !important; }
+    .str-proficient { border-left: 3px solid #0891b2 !important; }
+    .str-intermediate { border-left: 3px solid #94a3b8 !important; }
+    .str-familiar { border-left: 3px solid #e2e8f0 !important; }
     /* Cert-backed: amber */
     a.skill-pill.has-cert {
       background: #fef9ec;
@@ -884,9 +889,13 @@
   <p class="section-title">Technical Skills</p>
   <div class="divider"></div>
   <div class="skills-legend">
-    <div class="legend-item"><div class="legend-dot cert"></div> Amber = Certificate (click to open)</div>
-    <div class="legend-item"><div class="legend-dot github"></div> Gray = GitHub Project (click to open)</div>
-    <div class="legend-item"><div class="legend-dot none"></div> Plain = no proof link</div>
+    <div class="legend-item"><div style="width:12px;height:12px;border-radius:3px;border:1px solid #e2e8f0;border-left:3px solid #0d9488;flex-shrink:0"></div> Expert</div>
+    <div class="legend-item"><div style="width:12px;height:12px;border-radius:3px;border:1px solid #e2e8f0;border-left:3px solid #0891b2;flex-shrink:0"></div> Proficient</div>
+    <div class="legend-item"><div style="width:12px;height:12px;border-radius:3px;border:1px solid #e2e8f0;border-left:3px solid #94a3b8;flex-shrink:0"></div> Intermediate</div>
+    <div class="legend-item"><div style="width:12px;height:12px;border-radius:3px;border:1px solid #e2e8f0;border-left:3px solid #e2e8f0;flex-shrink:0"></div> Familiar</div>
+    <span style="color:#cbd5e1;font-size:0.75rem;margin:0 0.3rem">|</span>
+    <div class="legend-item"><div class="legend-dot cert"></div> Amber = Certificate</div>
+    <div class="legend-item"><div class="legend-dot github"></div> Gray = GitHub repo</div>
   </div>
 
   <div class="skills-table">
@@ -894,67 +903,67 @@
     <div class="skill-row">
       <div class="skill-category">🤖 Automation</div>
       <div class="skill-pills">
-        <a href="certificates/RobotFramework_Python_Selenium.pdf" target="_blank" class="skill-pill has-cert"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/selenium/selenium-original.svg" alt=""/>Selenium</a>
-        <a href="https://github.com/nalini0409/selenium-testng-framework" target="_blank" class="skill-pill has-github">↗ repo</a>
-        <a href="certificates/Playwright_Certification.pdf" target="_blank" class="skill-pill has-cert"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/playwright/playwright-original.svg" alt=""/>Playwright</a>
-        <a href="https://github.com/nalini0409/playwright-api-testing" target="_blank" class="skill-pill has-github">↗ repo</a>
-        <a href="certificates/RobotFramework_Python_Selenium.pdf" target="_blank" class="skill-pill has-cert"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Robot-framework-logo.png" style="width:14px;height:14px;object-fit:contain" alt=""/>Robot Framework</a>
-        <a href="https://github.com/nalini0409/robot-framework-automation" target="_blank" class="skill-pill has-github">↗ repo</a>
-        <a href="certificates/CucumberBDD.pdf" target="_blank" class="skill-pill has-cert"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cucumber/cucumber-plain.svg" alt=""/>Cucumber</a>
-        <a href="certificates/TestNG.pdf" target="_blank" class="skill-pill has-cert"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="" style="opacity:0.7"/>TestNG</a>
-        <a href="https://github.com/nalini0409/selenium-testng-framework" target="_blank" class="skill-pill has-github">↗ repo</a>
+        <a href="certificates/RobotFramework_Python_Selenium.pdf" target="_blank" class="skill-pill has-cert str-expert"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/selenium/selenium-original.svg" alt=""/>Selenium</a>
+        <a href="https://github.com/nalini0409/selenium-testng-framework" target="_blank" class="skill-pill has-github str-expert">↗ repo</a>
+        <a href="certificates/Playwright_Certification.pdf" target="_blank" class="skill-pill has-cert str-proficient"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/playwright/playwright-original.svg" alt=""/>Playwright</a>
+        <a href="https://github.com/nalini0409/playwright-api-testing" target="_blank" class="skill-pill has-github str-proficient">↗ repo</a>
+        <a href="certificates/RobotFramework_Python_Selenium.pdf" target="_blank" class="skill-pill has-cert str-expert"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Robot-framework-logo.png" style="width:14px;height:14px;object-fit:contain" alt=""/>Robot Framework</a>
+        <a href="https://github.com/nalini0409/robot-framework-automation" target="_blank" class="skill-pill has-github str-expert">↗ repo</a>
+        <a href="certificates/CucumberBDD.pdf" target="_blank" class="skill-pill has-cert str-intermediate"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cucumber/cucumber-plain.svg" alt=""/>Cucumber</a>
+        <a href="certificates/TestNG.pdf" target="_blank" class="skill-pill has-cert str-expert"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="" style="opacity:0.7"/>TestNG</a>
+        <a href="https://github.com/nalini0409/selenium-testng-framework" target="_blank" class="skill-pill has-github str-expert">↗ repo</a>
       </div>
     </div>
 
     <div class="skill-row">
       <div class="skill-category">🔌 API Testing</div>
       <div class="skill-pills">
-        <a href="certificates/RestAPI_RestAssured.pdf" target="_blank" class="skill-pill has-cert"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" alt=""/>Postman</a>
-        <a href="certificates/RestAPI_RestAssured.pdf" target="_blank" class="skill-pill has-cert"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="" style="opacity:0.7"/>REST Assured</a>
-        <a href="https://github.com/nalini0409/playwright-api-testing" target="_blank" class="skill-pill has-github">↗ repo</a>
-        <span class="skill-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xml/xml-original.svg" alt="" style="opacity:0.6"/>SOAP UI</span>
+        <a href="certificates/RestAPI_RestAssured.pdf" target="_blank" class="skill-pill has-cert str-proficient"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" alt=""/>Postman</a>
+        <a href="certificates/RestAPI_RestAssured.pdf" target="_blank" class="skill-pill has-cert str-proficient"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="" style="opacity:0.7"/>REST Assured</a>
+        <a href="https://github.com/nalini0409/playwright-api-testing" target="_blank" class="skill-pill has-github str-proficient">↗ repo</a>
+        <span class="skill-pill str-intermediate"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xml/xml-original.svg" alt="" style="opacity:0.6"/>SOAP UI</span>
       </div>
     </div>
 
     <div class="skill-row">
       <div class="skill-category">💻 Languages</div>
       <div class="skill-pills">
-        <a href="certificates/CoreJAVA.pdf" target="_blank" class="skill-pill has-cert"><i class="devicon-java-plain colored"></i>Java</a>
-        <a href="certificates/RobotFramework_Python_Selenium.pdf" target="_blank" class="skill-pill has-cert"><i class="devicon-python-plain colored"></i>Python</a>
-        <span class="skill-pill"><i class="devicon-azuresqldatabase-plain colored"></i>SQL</span>
+        <a href="certificates/CoreJAVA.pdf" target="_blank" class="skill-pill has-cert str-expert"><i class="devicon-java-plain colored"></i>Java</a>
+        <a href="certificates/RobotFramework_Python_Selenium.pdf" target="_blank" class="skill-pill has-cert str-proficient"><i class="devicon-python-plain colored"></i>Python</a>
+        <span class="skill-pill str-intermediate"><i class="devicon-azuresqldatabase-plain colored"></i>SQL</span>
       </div>
     </div>
 
     <div class="skill-row">
       <div class="skill-category">⚙️ CI / CD</div>
       <div class="skill-pills">
-        <span class="skill-pill"><i class="devicon-jenkins-plain colored"></i>Jenkins</span>
-        <a href="https://github.com/nalini0409" target="_blank" class="skill-pill has-github"><i class="devicon-github-original"></i>GitHub Actions</a>
-        <a href="https://github.com/nalini0409" target="_blank" class="skill-pill has-github"><i class="devicon-git-plain colored"></i>Git</a>
-        <span class="skill-pill"><i class="devicon-maven-plain colored"></i>Maven</span>
+        <span class="skill-pill str-proficient"><i class="devicon-jenkins-plain colored"></i>Jenkins</span>
+        <a href="https://github.com/nalini0409" target="_blank" class="skill-pill has-github str-proficient"><i class="devicon-github-original"></i>GitHub Actions</a>
+        <a href="https://github.com/nalini0409" target="_blank" class="skill-pill has-github str-proficient"><i class="devicon-git-plain colored"></i>Git</a>
+        <span class="skill-pill str-intermediate"><i class="devicon-maven-plain colored"></i>Maven</span>
       </div>
     </div>
 
     <div class="skill-row">
       <div class="skill-category">🛠️ Tools</div>
       <div class="skill-pills">
-        <a href="certificates/JIRA&Agile.pdf" target="_blank" class="skill-pill has-cert"><i class="devicon-jira-plain colored"></i>JIRA</a>
+        <a href="certificates/JIRA&Agile.pdf" target="_blank" class="skill-pill has-cert str-expert"><i class="devicon-jira-plain colored"></i>JIRA</a>
       </div>
     </div>
 
     <div class="skill-row">
       <div class="skill-category">☁️ Cloud</div>
       <div class="skill-pills">
-        <span class="skill-pill"><i class="devicon-amazonwebservices-plain-wordmark colored"></i>AWS</span>
-        <span class="skill-pill"><i class="devicon-azure-plain colored"></i>Azure DevOps</span>
+        <span class="skill-pill str-familiar"><i class="devicon-amazonwebservices-plain-wordmark colored"></i>AWS</span>
+        <span class="skill-pill str-familiar"><i class="devicon-azure-plain colored"></i>Azure DevOps</span>
       </div>
     </div>
 
     <div class="skill-row">
       <div class="skill-category">✨ Interests</div>
       <div class="skill-pills">
-        <a href="certificates/GenAI Certification.pdf" target="_blank" class="skill-pill has-cert">🧠 Gen AI for Testing</a>
-        <span class="skill-pill">🔬 Testing Gen AI Systems</span>
+        <a href="certificates/GenAI Certification.pdf" target="_blank" class="skill-pill has-cert str-familiar">🧠 Gen AI for Testing</a>
+        <span class="skill-pill str-familiar">🔬 Testing Gen AI Systems</span>
       </div>
     </div>
 
