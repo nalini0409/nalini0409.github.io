@@ -20,7 +20,14 @@
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      scroll-snap-type: y proximity;
+    }
+    header, section, footer {
+      scroll-snap-align: start;
+      scroll-snap-stop: normal;
+    }
 
     body {
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
