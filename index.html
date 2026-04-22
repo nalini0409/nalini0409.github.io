@@ -322,18 +322,47 @@
     .section {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 2.5rem 2rem;
+      padding: 3rem 2rem;
     }
+    .section-wrap { padding: 0; }
+    .section-wrap:nth-child(even) { background: #f8fafc; }
+    .section-wrap:nth-child(odd)  { background: #fff; }
+
+    /* Section header */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+    }
+    .section-num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .section-header-text { display: flex; flex-direction: column; }
     .section-title {
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       font-weight: 700;
       color: var(--primary);
-      margin-bottom: 0.3rem;
+      line-height: 1.2;
     }
     .section-subtitle {
       color: var(--text-muted);
-      margin-bottom: 1rem;
-      font-size: 0.9rem;
+      font-size: 0.82rem;
+      margin-top: 0.15rem;
+    }
+    .section-title-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
     }
     .divider {
       width: 36px;
@@ -926,20 +955,30 @@
 
 <!-- About -->
 <section class="section" id="about">
-  <p class="section-title">Professional Summary</p>
-  <div class="divider"></div>
+  <div class="section-header">
+    <div class="section-num">01</div>
+    <div class="section-header-text">
+      <h2 class="section-title">Professional Summary</h2>
+    </div>
+    <div class="section-title-line"></div>
+  </div>
   <div class="summary-card">
     Automation-focused QA Engineer with 7 years of experience in Selenium, Robot Framework, and API testing.
     Built scalable automation frameworks that reduced regression cycles by up to 40%. Experienced in Agile
-    environments and CI/CD integration using Jenkins and GitHub Actions. Based in Seattle and available for
-    contract or contract-to-hire roles.
+    environments and CI/CD integration using Jenkins and GitHub Actions. Based in Seattle and open to
+    contract, contract-to-hire, and full-time roles.
   </div>
 </section>
 
 <!-- Skills -->
 <section class="section" id="skills">
-  <p class="section-title">Technical Skills</p>
-  <div class="divider"></div>
+  <div class="section-header">
+    <div class="section-num">02</div>
+    <div class="section-header-text">
+      <h2 class="section-title">Technical Skills</h2>
+    </div>
+    <div class="section-title-line"></div>
+  </div>
   <div class="skills-legend">
     <div class="legend-item"><div style="width:12px;height:12px;border-radius:3px;border:1px solid #e2e8f0;border-left:3px solid #0d9488;flex-shrink:0"></div> Expert</div>
     <div class="legend-item"><div style="width:12px;height:12px;border-radius:3px;border:1px solid #e2e8f0;border-left:3px solid #0891b2;flex-shrink:0"></div> Proficient</div>
@@ -1035,8 +1074,13 @@
 <!-- Experience -->
 <section class="experience-bg" id="experience">
   <div class="section">
-    <p class="section-title">Professional Experience</p>
-    <div class="divider"></div>
+    <div class="section-header">
+      <div class="section-num">03</div>
+      <div class="section-header-text">
+        <h2 class="section-title">Professional Experience</h2>
+      </div>
+      <div class="section-title-line"></div>
+    </div>
     <div class="timeline">
 
       <!-- Career Break -->
@@ -1049,16 +1093,15 @@
           <span class="exp-period">Feb 2025 – Present</span>
         </div>
         <div class="exp-project">
-          Planned career break following relocation to the US. Used this time to upskill in automation and CI/CD, build independent projects, and settle into the Seattle tech ecosystem.
+          Planned break following relocation to Seattle. Used this time intentionally to upskill, build projects, and establish roots in the US tech ecosystem.
         </div>
         <div class="exp-achievement">
           🎓 Certificate in Project Management, University of Washington, Seattle (2025 – Present)
         </div>
         <ul class="exp-list">
-          <li>Relocated to Seattle, WA and proactively used the transition period to deepen technical skills.</li>
-          <li>Built personal automation projects using Selenium, Robot Framework, and Playwright (hosted on GitHub) to stay current with modern testing practices and CI/CD workflows.</li>
-          <li>Completed certifications in Gen AI for Testing and AI Agents for Testing, exploring the intersection of AI and quality engineering.</li>
-          <li>Fully ready to return to a full-time or contract QA role and actively seeking opportunities in the Seattle area and remotely.</li>
+          <li>Built personal automation projects in Selenium, Robot Framework, and Playwright, published on GitHub, to stay sharp on modern testing practices and CI/CD workflows.</li>
+          <li>Completed certifications in Gen AI for Testing and AI Agents for Testing, exploring how AI is reshaping quality engineering.</li>
+          <li>Actively seeking QA roles in the Seattle area and remotely across contract, contract-to-hire, and full-time engagements.</li>
         </ul>
       </div>
 
@@ -1072,17 +1115,16 @@
           <span class="exp-period">Jul 2022 – Feb 2025</span>
         </div>
         <div class="exp-project">
-          Project: Validated a network provisioning system for a leading US telecom company, ensuring backend sync, access control, and API reliability.
+          Validated a network provisioning system for a leading US telecom company, ensuring backend sync, access control, and API reliability.
         </div>
         <div class="exp-achievement">
-          🏆 Key Achievement: Built a reusable Robot Framework suite covering 70% of regression scenarios, reducing manual testing effort by 45%.
+          🏆 Key Achievement: Reduced manual testing effort by 45% by building a reusable Robot Framework suite covering 70% of regression scenarios.
         </div>
         <ul class="exp-list">
-          <li>Led a 4-member QA team and built a reusable Robot Framework automation suite covering 70% of regression scenarios.</li>
-          <li>Automated 150+ regression and functional test cases using Selenium and TestNG, reducing manual testing effort by 45%.</li>
-          <li>Reviewed code for quality and reusability; identified risks and improved processes.</li>
-          <li>Collaborated with onsite teams and clients to resolve issues and clarify requirements.</li>
+          <li>Led a 4-member QA team, defining standards for test design, code reusability, and risk management.</li>
+          <li>Automated 150+ regression and functional test cases using Selenium and TestNG.</li>
           <li>Executed sanity and regression tests across multiple environments and validated backend data with SQL.</li>
+          <li>Collaborated with onsite teams and clients to resolve issues and clarify requirements.</li>
         </ul>
       </div>
 
@@ -1096,7 +1138,7 @@
           <span class="exp-period">May 2018 – Jun 2022</span>
         </div>
         <div class="exp-project">
-          Project: Tested a group insurance platform for a leading US insurer, enabling benefit plan configuration and employee enrollment.
+          Tested a group insurance platform for a leading US insurer, enabling benefit plan configuration and employee enrollment.
         </div>
         <div class="exp-achievement">
           🏆 Key Achievement: Reduced test execution time by 40% via Selenium framework optimization.
@@ -1116,8 +1158,13 @@
 
 <!-- Education -->
 <section class="section" id="education">
-  <p class="section-title">Education</p>
-  <div class="divider"></div>
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <div class="section-header-text">
+      <h2 class="section-title">Education</h2>
+    </div>
+    <div class="section-title-line"></div>
+  </div>
   <div class="edu-grid">
     <div class="edu-card">
       <div class="edu-icon">🎓</div>
@@ -1137,8 +1184,13 @@
 <!-- Certifications -->
 <section class="certs-bg" id="certifications">
   <div class="section">
-    <p class="section-title">Certifications &amp; Training</p>
-    <div class="divider"></div>
+    <div class="section-header">
+      <div class="section-num">05</div>
+      <div class="section-header-text">
+        <h2 class="section-title">Certifications &amp; Training</h2>
+      </div>
+      <div class="section-title-line"></div>
+    </div>
     <div class="cert-chips">
       <div class="cert-chip">Selenium</div>
       <div class="cert-chip">Agile</div>
@@ -1154,8 +1206,13 @@
 
 <!-- Projects -->
 <section class="section" id="projects">
-  <p class="section-title">GitHub Projects</p>
-  <div class="divider"></div>
+  <div class="section-header">
+    <div class="section-num">06</div>
+    <div class="section-header-text">
+      <h2 class="section-title">GitHub Projects</h2>
+    </div>
+    <div class="section-title-line"></div>
+  </div>
   <div class="skills-grid">
     <div class="skill-card">
       <div class="skill-card-icon">☕</div>
@@ -1190,8 +1247,13 @@
 <!-- Blog -->
 <section class="experience-bg" id="blog">
   <div class="section">
-    <p class="section-title">Blog</p>
-    <div class="divider"></div>
+    <div class="section-header">
+      <div class="section-num">07</div>
+      <div class="section-header-text">
+        <h2 class="section-title">Blog</h2>
+      </div>
+      <div class="section-title-line"></div>
+    </div>
     <a href="blog/why-qa-matters-in-the-age-of-ai.html" style="text-decoration:none">
       <div class="exp-card" style="cursor:pointer; max-width:680px;">
         <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:0.8rem;">
@@ -1213,9 +1275,14 @@
 
 <!-- Certificate Gallery -->
 <section class="section" id="cert-gallery">
-  <p class="section-title">Certificate Gallery</p>
-  <div class="divider"></div>
-  <p class="section-subtitle">Click any certificate to view it.</p>
+  <div class="section-header">
+    <div class="section-num">08</div>
+    <div class="section-header-text">
+      <h2 class="section-title">Certificate Gallery</h2>
+      <p class="section-subtitle">Click any certificate to view it.</p>
+    </div>
+    <div class="section-title-line"></div>
+  </div>
   <div class="cert-cards-grid">
     <div class="cert-card" onclick="openCert('certificates/CoreJAVA.pdf', 'Core Java')">
       <div class="cert-card-icon">☕</div>
