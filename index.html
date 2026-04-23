@@ -319,14 +319,15 @@
     .btn-outline:hover { background: rgba(255,255,255,0.1); }
 
     /* ── Layout ── */
+    .section-outer { width: 100%; }
+    .section-outer.bg-white  { background: #fff; }
+    .section-outer.bg-light  { background: #f8fafc; }
+    .section-outer.bg-muted  { background: #f1f5f9; }
     .section {
       max-width: 1100px;
       margin: 0 auto;
       padding: 3rem 2rem;
     }
-    .section-wrap { padding: 0; }
-    .section-wrap:nth-child(even) { background: #f8fafc; }
-    .section-wrap:nth-child(odd)  { background: #fff; }
 
     /* Section header */
     .section-header {
@@ -954,7 +955,8 @@
 
 
 <!-- About -->
-<section class="section" id="about">
+<section class="section-outer bg-white" id="about">
+<div class="section">
   <div class="section-header">
     <div class="section-num">01</div>
     <div class="section-header-text">
@@ -968,10 +970,12 @@
     environments and CI/CD integration using Jenkins and GitHub Actions. Based in Seattle and open to
     contract, contract-to-hire, and full-time roles.
   </div>
+</div>
 </section>
 
 <!-- Skills -->
-<section class="section" id="skills">
+<section class="section-outer bg-light" id="skills">
+<div class="section">
   <div class="section-header">
     <div class="section-num">02</div>
     <div class="section-header-text">
@@ -1069,6 +1073,7 @@
     </div>
 
   </div>
+</div>
 </section>
 
 <!-- Experience -->
@@ -1157,7 +1162,8 @@
 </section>
 
 <!-- Education -->
-<section class="section" id="education">
+<section class="section-outer bg-white" id="education">
+<div class="section">
   <div class="section-header">
     <div class="section-num">04</div>
     <div class="section-header-text">
@@ -1179,6 +1185,7 @@
       <span class="edu-period">2025 – Present</span>
     </div>
   </div>
+</div>
 </section>
 
 <!-- Certifications -->
@@ -1205,7 +1212,8 @@
 </section>
 
 <!-- Projects -->
-<section class="section" id="projects">
+<section class="section-outer bg-light" id="projects">
+<div class="section">
   <div class="section-header">
     <div class="section-num">06</div>
     <div class="section-header-text">
@@ -1242,6 +1250,7 @@
       <a href="https://github.com/nalini0409/playwright-api-testing" target="_blank" style="color:var(--accent);font-size:0.83rem;font-weight:600;text-decoration:none;">View on GitHub →</a>
     </div>
   </div>
+</div>
 </section>
 
 <!-- Blog -->
@@ -1274,7 +1283,8 @@
 </section>
 
 <!-- Certificate Gallery -->
-<section class="section" id="cert-gallery">
+<section class="section-outer bg-white" id="cert-gallery">
+<div class="section">
   <div class="section-header">
     <div class="section-num">08</div>
     <div class="section-header-text">
@@ -1325,6 +1335,7 @@
       <div class="cert-card-view">↗ View Certificate</div>
     </div>
   </div>
+</div>
 </section>
 
 <!-- Modal -->
